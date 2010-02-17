@@ -131,6 +131,8 @@ class APIHandler(web.RequestHandler):
 		shouldWeThrottle = True
 		currentTimestamp = datetime.now()
 		timestamps = self.mc.get( apikey )
+		if timestamps is None:
+			timestamps = []
 		log.debug('throttleCheck: timestamps = %s' % timestamps)
 		if len(timestamps) == OpenAPIConfig.THROTTLE_FREQUENCY-1:
 			duration = currentTimestamp - timestamps.pop(0)
@@ -142,7 +144,7 @@ class APIHandler(web.RequestHandler):
 		else:
 			shouldWeThrottle = False
 		timestamps.append( currentTimestamp )
-		self.mc.set( apiKey, timestamps, OpenAPIConfig.MEMCACHE_WINDOW )
+		self.mc.set( apikey, timestamps, OpenAPIConfig.MEMCACHE_WINDOW )
 		log.debug('throttleCheck END: %s' % shouldWeThrottle)
 		return shouldWeThrottle
 	
