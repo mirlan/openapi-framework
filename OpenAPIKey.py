@@ -51,8 +51,8 @@ class RegisterKey(APIHandler):
 				'timestamp': None,
 				'count': 0
 			} )
-			self.render("../templates/RegisterKey.html", form=form, key=key)
+			self.render("templates/RegisterKey.html", form=form, key=key)
 		else:
 			form = RegisterForm()
-			self.render("../templates/RegisterKey.html", form=form, key=False)
+			self.render("templates/RegisterKey.html", form=form, key=False)
 
