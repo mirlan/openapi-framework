@@ -130,7 +130,7 @@ class APIHandler(web.RequestHandler):
 		log.debug('throttleCheck END')
 		shouldWeThrottle = True
 		currentTimestamp = datetime.now()
-		timestamps = self.mc.get( apikey )
+		timestamps = self.mc.get( apikey, [] )
 		if timestamps is None:
 			timestamps = []
 		log.debug('throttleCheck: timestamps = %s' % timestamps)
