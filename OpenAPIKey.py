@@ -8,7 +8,7 @@ from datetime import datetime
 
 class RegisterForm(forms.Form):
 
-	apiKeyType = forms.CharField(choices=OpenAPIConfig.API_NAMES, required=True)
+	apiKeyType = forms.ChoiceField(choices=OpenAPIConfig.API_NAMES, required=True)
 	name = forms.CharField(label="Your name", required=True)
 	email = forms.EmailField(label="E-Mail", required=True)
 	app = forms.CharField(label="Application name", required=True)
@@ -33,7 +33,7 @@ class RegisterKey(APIHandler):
 
 	def _get(self, args):
 		form = RegisterForm()
-		self.render("../templates/RegisterKey.html", form=form, key=False)
+		self.render("templates/RegisterKey.html", form=form, key=False)
 
 	def _post(self, args):
 		formArgs = {}
@@ -47,7 +47,7 @@ class RegisterKey(APIHandler):
 				'email': args['email'],
 				'app': args['app'],
 				'url': args['url'],
-				'issuedate': datetime.now()
+				'issuedate': datetime.now(),
 				'timestamp': None,
 				'count': 0
 			} )
