@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<TITLE>api.dc.gov</TITLE>
+<link rel="shorcut icon" href="/static/favicon.ico"/>
+</HEAD><BODY>
+
+<DIV align="center">
+<TABLE width="800px">
+<TBODY><TR align="center">
+<TD width="50px" align="left" valign="top">
+<a href="http://api.dc.gov"><IMG src="/static/img/api_small.png" border="0"></a> 
+</TD>
+<TD width="300px" align="left" valign="top">
+<b>Open API</b><br/>
+<i>Use. Share. Contribute.</i>
+<br/>
+<br/>
+</TD>
+<TD width="500px" align="right" valign="top">
+<IMG src="/static/img/dc_t_small.png" border="0">
+</TD>
+</TR>
+
+<TR>
+<TD align="left" colspan="3">
+<BR>
+{% if key %}
+Thanks for registering! Here is your API key <b> {{ key }} </b>
+{% else %}
+<form action="/key" method="post">
+{{ form }}
+<tr><th><label for="I agree to the API Terms of Service"></label></th><td><button name="I agree to the API Terms of Service" type="submit" id="I agree to the API Terms of Service">I agree to the API Terms of Service</button></td></tr>
+</form>
+{% end %}
+</TD>
+</TR>
+
+<TR>
+<TD bgcolor="#EFECDF" align="left" colspan="3">
+<FONT style="font-family: Arial">
+<B><FONT style="color: #CC0000;">Open API Terms of Service</FONT></B> 
+<br/>
+<br/>
+Use of the DC Open API is subject to the following terms:
+<br/>
+<ul>
+<li>
+DC Government can not be held liable for the accuracy or availability of the service provided and do not make any claims to accuracy, completeness, availability, or any other warranty or guarantee.
+</li><li>
+When using the Open API, attribution is appreciated but not required. Implication or claim of endorsement is strictly prohibited.
+</li><li>
+Usage of the API depends upon an API key which should only be used by the individual/organization which requested it. Sharing or distribution of API keys is not permitted.
+</li><li>
+Usage is currently not limited, but excessive usage is monitored and may be grounds for the usage caps or termination of service. If you plan to make heavy use of the Open API please contact us beforehand so we can be sure.
+</li><li>
+Open API does not distribute specifics of API usage except in cases where we have obtained your permission, we do however reserve the right to track and publish aggregate statistics on usage per application.
+</li><li>
+These terms may be modified at any time, users will be notified of any changes via the email address on file.
+</li><li>
+Service may be terminated at any time at the discretion of DC Government.
+</li>
+<ul>
+</FONT>
+</TD>
+</TR>
+
+<TR>
+<TD colspan="3">
+<HR size="1" width="99%" color="#dddddd" noshade="noshade">
+<BR>
+<TABLE width="100%">
+<TBODY><TR valign="top" align="center">
+<TD width="*" colspan="2" align="left">
+<FONT size="-2" color="lightgrey">Version 1.0 Build 258 (ODC1)</FONT>
+</TD>
+<TD width="240px" align="right">
+<A href="http://octo.dc.gov/" class="img"><IMG src="/static/img/powered_by_octo.png" border="0"></A>
+</TD>
+</TR>
+</TBODY></TABLE>
+</TD>
+</TR>
+</TBODY></TABLE>
+</DIV>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-2638726-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</BODY></HTML>
