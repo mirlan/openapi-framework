@@ -41,17 +41,18 @@ class RegisterKey(APIHandler):
 		form = RegisterForm(data=formArgs)
 		if form.is_valid():
 			# do whatever is required for registration
-			self.getAPIKeysCollection(args['apiKeyType']).save( {
-				'apikey': str(uuid.uuid4()),
-				'name': args['name'],
-				'email': args['email'],
-				'app': args['app'],
-				'url': args['url'],
+			newKey = str(uuid.uuid4()) 
+			self.getAPIKeysCollection(formArgs['apiKeyType']).save( {
+				'apikey': newKey,
+				'name': formArgs['name'],
+				'email': formArgs['email'],
+				'app': formArgs['app'],
+				'url': formArgs['url'],
 				'issuedate': datetime.now(),
 				'timestamp': None,
 				'count': 0
 			} )
-			self.render("templates/RegisterKey.html", form=form, key=key)
+			self.render("templates/RegisterKey.html", form=form, key=newKey)
 		else:
 			form = RegisterForm()
 			self.render("templates/RegisterKey.html", form=form, key=False)
