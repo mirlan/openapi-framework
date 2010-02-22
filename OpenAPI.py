@@ -156,10 +156,10 @@ class APIHandler(web.RequestHandler):
 		#check if apikey parameter was provided
 		apikey = self.request.arguments.get('apikey', [None])[0]
 		if not apikey:
-			raise web.HTTPError(401, self.format(), "APIKEY parameter is missing.")
+			raise web.HTTPError(403, "APIKEY parameter is missing.")
 		elif len(apikey) != 36:
 			#TODO: fix UUID validation
-			raise web.HTTPError(401, self.format(), "APIKEY parameter is invalid.")
+			raise web.HTTPError(403, "APIKEY parameter is invalid.")
 
 		# check cache
 		if self.mc.get( apikey ): # apikey is in memcache
@@ -173,10 +173,10 @@ class APIHandler(web.RequestHandler):
 				isValidKey = False
 		
 		if isValidKey is False:
-			raise web.HTTPError(401, self.format(), "APIKEY given could not be found.")
+			raise web.HTTPError(403, "APIKEY given could not be found.")
 			
 		if self.throttleCheck( apikey ):
-			raise web.HTTPError(401, self.format(), "API usage throttled for this APIKEY, usage should not exceed %s times in %s seconds." % \
+			raise web.HTTPError(403, "API usage throttled for this APIKEY, usage should not exceed %s times in %s seconds." % \
 				(OpenAPIConfig.THROTTLE_FREQUENCY, OpenAPIConfig.THROTTLE_WINDOW))
 		log.debug('verifyKey END')
 		
